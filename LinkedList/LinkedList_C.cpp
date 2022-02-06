@@ -49,16 +49,43 @@ void LinkedList_C::Insert(int data, int position)
 	}
 	else
 	{
-		std::cout << "position is incorrect\n";
+		std::cout << "incorrect position in " << __FUNCTION__ << "\n";
 	}
 }
 
 void LinkedList_C::Modify(int data, int position)
 {
+	if (position > size)
+	{
+		std::cout << "incorrect position in "<< __FUNCTION__ << "\n";
+		return;
+	}
+
+	Node* nodePointer = headNode;
+	for (int index = 1; index < position; index++)
+	{
+		nodePointer = nodePointer->next;
+	}
+	nodePointer->data = data;
 }
 
 void LinkedList_C::Remove(int position)
 {
+	if (position > size)
+	{
+		std::cout << "incorrect position in " << __FUNCTION__ << "\n";
+		return;
+	}
+
+	Node* nodePointer = headNode;
+	Node* nodePointerPrevious = headNode;
+	for (int index = 1; index < position; index++)
+	{
+		nodePointerPrevious = nodePointer;
+		nodePointer = nodePointer->next;
+	}
+	nodePointerPrevious->next = nodePointer->next;
+	size--;
 }
 
 void LinkedList_C::Print()

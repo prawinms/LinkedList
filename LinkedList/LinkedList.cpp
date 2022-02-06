@@ -13,7 +13,12 @@ int main()
     arryData->Append(6);
     arryData->Append(7);
 
+    arryData->Modify(10, 100);
+
     arryData->Print();
-    std::cout << "Hello World!\n";
+
+    arryData->Remove(2);
+
+    arryData->Print();
 }
 
